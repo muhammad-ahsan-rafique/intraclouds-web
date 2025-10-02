@@ -64,7 +64,7 @@ Our solutions have helped businesses achieve:
 <p align="center">
   <a href="https://www.intraclouds.com">🌐 Website</a> &nbsp;|&nbsp;
   <a href="https://www.linkedin.com/company/intraclouds/">👥 LinkedIn</a> &nbsp;|&nbsp;
-  <a href="mailto:ahsan.malik1010@gmail.com">📧 Email</a>
+  <a href="ahsan.malik1010@gmail.com">📧 Email</a>
 </p>
 
 ### Global Presence
