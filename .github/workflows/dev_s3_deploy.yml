@@ -8,6 +8,7 @@ on:
 env:
   S3_BUCKET_NAME: dev.intraclouds.com
   AWS_REGION: us-east-2
+  CLOUDFRONT_DISTRIBUTION_ID: E10FKBKZP56D79
   
 jobs:
   build_and_deploy:
@@ -39,3 +40,10 @@ jobs:
         run: |
           aws s3 sync build/ s3://${{ env.S3_BUCKET_NAME }} --delete
           echo "Deployment successful to s3://${{ env.S3_BUCKET_NAME }}"
+          
+      - name: Create CloudFront Invalidation
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ env.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*"
+          echo "CloudFront invalidation successfully initiated for all paths."
