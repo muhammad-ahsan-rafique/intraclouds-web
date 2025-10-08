@@ -413,7 +413,6 @@
     <div class="hero-content">
       <h1>We Transform Ideas Into Technology</h1>
       <h3>Innovative solutions for your digital transformation journey</h3>
-      <h3>Testing CI CD Pipeline</h3>
     </div>
   </div>
 
