@@ -1,0 +1,41 @@
+name: Deploy Laravel Static Assets to S3
+
+on:
+  workflow_dispatch:
+  push: 
+     branches:
+      - dev
+env:
+  S3_BUCKET_NAME: dev.intraclouds.com
+  AWS_REGION: us-east-2
+  
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create index.html from welcome.blade.php
+        run: |
+          mkdir -p build/
+          cp resources/views/welcome.blade.php build/index.html
+          echo "Successfully created build/index.html"
+          
+      - name: Copy public/images folder
+        run: |
+          cp -r public/images build/
+          echo "Successfully copied public/images to build/images"
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Deploy files to S3
+        run: |
+          aws s3 sync build/ s3://${{ env.S3_BUCKET_NAME }} --delete --acl public-read
+          echo "Deployment successful to s3://${{ env.S3_BUCKET_NAME }}"
