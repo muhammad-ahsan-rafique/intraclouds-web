@@ -55,38 +55,47 @@
 
     .nav-toggle {
       display: none;
-      padding: 0.5em;
+      width: 30px;
+      height: 30px;
       background: transparent;
       border: none;
       cursor: pointer;
       position: absolute;
-      right: 1rem;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
       z-index: 1000;
+      padding: 0;
     }
 
     .hamburger {
       display: block;
       position: relative;
-    }
-
-    .hamburger,
-    .hamburger::before,
-    .hamburger::after {
-      width: 1.5em;
+      width: 20px;
       height: 2px;
       background: white;
-      transition: transform 0.3s;
+      margin: 0 auto;
+      transition: background 0.3s ease;
     }
 
     .hamburger::before,
     .hamburger::after {
       content: '';
       position: absolute;
+      width: 20px;
+      height: 2px;
+      background: white;
       left: 0;
+      transition: all 0.3s ease;
     }
 
-    .hamburger::before { top: -6px; }
-    .hamburger::after { bottom: -6px; }
+    .hamburger::before {
+      top: -6px;
+    }
+
+    .hamburger::after {
+      bottom: -6px;
+    }
 
     @media (max-width: 768px) {
       .logo-area img {
@@ -118,20 +127,19 @@
         transform: translateX(0);
       }
 
+      /* New hamburger animation */
       .nav-toggle.nav-open .hamburger {
-        transform: rotate(45deg);
+        background: transparent;
       }
 
       .nav-toggle.nav-open .hamburger::before {
-        transform: rotate(90deg) translateX(-8px);
+        transform: translateY(6px) rotate(45deg);
       }
 
       .nav-toggle.nav-open .hamburger::after {
-        opacity: 0;
+        transform: translateY(-6px) rotate(-45deg);
       }
-    }
-
-    @media (max-width: 480px) {
+    }    @media (max-width: 480px) {
       .logo-area img {
         width: 150px;
       }
