@@ -782,7 +782,7 @@
     <div class="service-card">
       <img src="images/AI.png" alt="AI/Computer Vision Logo">
       <h3>AI / COMPUTER VISION</h3>
-      <p>Transform data into intelligence with our AI and Computer Vision solutions. From automation to real-time image analysis, we build smart systems that drive business impact.</p>
+      <p>Transform information and into intelligence with our AI and Computer Vision solutions. From automation to real-time image analysis, we build smart systems that drive business impact.</p>
       <p class="italic-text"></p>
     </div>
     <div class="service-card">
