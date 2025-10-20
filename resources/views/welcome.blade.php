@@ -19,10 +19,9 @@
       padding-top: 80px; /* Leaves space for fixed navbar */
     }
     html {
-  scroll-padding-top: 100px; /* equal to navbar height + small margin */
-  scroll-behavior: smooth;   /* optional: makes scrolling smooth */
-}
-
+      scroll-padding-top: 100px; /* equal to navbar height + small margin */
+      scroll-behavior: smooth;   /* optional: makes scrolling smooth */
+    }
 
     /* NAVIGATION BAR */
     .navbar {
@@ -139,7 +138,9 @@
       .nav-toggle.nav-open .hamburger::after {
         transform: translateY(-6px) rotate(-45deg);
       }
-    }    @media (max-width: 480px) {
+    }
+
+    @media (max-width: 480px) {
       .logo-area img {
         width: 150px;
       }
@@ -173,16 +174,15 @@
 
     /* HERO SECTION */
     .hero {
-      min-height: 85vh;
-      background: linear-gradient(rgba(37, 67, 108, 0.8), rgba(46, 46, 46, 0.8)),
+      height: 85vh;
+      background: linear-gradient(rgba(37, 67, 108, 0.7), rgba(46, 46, 46, 0.7)),
         url('images/baf.png') center/cover;
-      background-size: cover;
+      background-size: 80% auto;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       color: white;
-      padding: 2rem 1rem;
     }
 
     .hero-content {
@@ -199,29 +199,35 @@
       font-size: 3rem;
       margin-bottom: 1.5rem;
       line-height: 1.2;
+      color: white; /* Explicitly set to white */
     }
 
     .hero h3 {
       font-size: 1.2rem;
       margin-bottom: 1rem;
       line-height: 1.5;
+      color: white; /* Explicitly set to white */
     }
 
     @media (max-width: 768px) {
       .hero h1 {
         font-size: 2rem;
+        color: white; /* Ensure white color on smaller screens */
       }
       .hero h3 {
         font-size: 1.1rem;
+        color: white; /* Ensure white color on smaller screens */
       }
     }
 
     @media (max-width: 480px) {
       .hero h1 {
         font-size: 1.8rem;
+        color: white; /* Ensure white color on smaller screens */
       }
       .hero h3 {
         font-size: 1rem;
+        color: white; /* Ensure white color on smaller screens */
       }
     }
 
@@ -374,6 +380,9 @@
       border-radius: 15px;
       transition: all 0.3s ease;
       border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      backdrop-filter: blur(5px); /* Subtle blur for modern look */
+      -webkit-backdrop-filter: blur(5px); /* For Safari compatibility */
     }
 
     .icon-wrapper {
@@ -392,7 +401,7 @@
       width: 24px;
       height: 24px;
       filter: brightness(0) invert(1);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, filter 0.3s ease;
     }
 
     .contact-link span {
@@ -400,25 +409,31 @@
       font-size: 0.9rem;
       text-align: center;
       transition: color 0.3s ease;
+      font-weight: 500; /* Slightly bolder for clarity */
     }
 
     .contact-link:hover {
-      transform: translateY(-5px);
-      background: rgba(75, 192, 217, 0.1);
+      transform: translateY(-5px) scale(1.03); /* Subtle scale for elegance */
+      background: rgba(255, 255, 255, 0.15); /* Semi-transparent white for clean look */
       border-color: #4bc0d9;
+      box-shadow: 0 8px 25px rgba(75, 192, 217, 0.3); /* Cyan glow effect */
+      backdrop-filter: blur(8px); /* Enhanced blur on hover */
+      -webkit-backdrop-filter: blur(8px);
     }
 
     .contact-link:hover .icon-wrapper {
-      background: rgba(75, 192, 217, 0.2);
+      background: rgba(75, 192, 217, 0.3); /* Slightly stronger cyan */
       transform: scale(1.1);
     }
 
     .contact-link:hover img {
       transform: scale(1.1);
+      filter: brightness(0); /* Dark icons for contrast */
     }
 
     .contact-link:hover span {
-      color: #4bc0d9;
+      color: #1B2F5B; /* Dark navy for high contrast and readability */
+      font-weight: 600; /* Bolder on hover for emphasis */
     }
 
     @media (max-width: 1024px) {
@@ -500,7 +515,9 @@
       padding: 0;
       flex-wrap: nowrap;
       max-width: 1200px;
-    }    .contact-item {
+    }
+
+    .contact-item {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -589,6 +606,10 @@
       border-radius: 10px;
       transition: transform 0.3s, box-shadow 0.3s;
       text-align: center;
+      min-height: 200px; /* Ensure consistent height */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     @media (max-width: 1200px) {
@@ -617,18 +638,21 @@
     .tech-icons {
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 1rem;
-      flex-wrap: wrap;
+      flex-wrap: nowrap; /* Prevent wrapping to keep logos in a single line */
     }
 
     .cloud-computing .tech-icons {
-      flex-wrap: nowrap;
+      flex-wrap: nowrap; /* Ensure no wrapping for cloud computing */
     }
 
     .tech-item {
       display: flex;
       flex-direction: column;
       align-items: center;
+      flex: 1; /* Ensure equal width for each tech-item */
+      min-width: 0; /* Prevent overflow */
     }
 
     .tech-item img {
@@ -729,9 +753,9 @@
         width: 100%;
       }
       .cloud-computing .tech-icons {
-        flex-wrap: wrap;
+        flex-wrap: nowrap; /* Keep logos in a single line */
         justify-content: center;
-        gap: 1.5rem;
+        gap: 1rem;
       }
       .tech-item {
         margin: 0.5rem;
@@ -956,6 +980,22 @@
         navLinks.classList.remove('nav-open');
       });
     });
+
+    /*
+    // Optional JavaScript for a fade-in animation on hover (not used in current implementation)
+    document.querySelectorAll('.contact-link').forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        link.style.transition = 'all 0.3s ease, opacity 0.3s ease';
+        link.style.opacity = '0.8';
+        setTimeout(() => {
+          link.style.opacity = '1';
+        }, 150);
+      });
+      link.addEventListener('mouseleave', () => {
+        link.style.opacity = '1';
+      });
+    });
+    */
   </script>
 </body>
 </html>
