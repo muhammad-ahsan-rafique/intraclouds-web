@@ -960,7 +960,9 @@
   <footer class="footer">
     <span>© 2025 INTRACLOUDS (SMC-PRIVATE) LIMITED</span>
     <div>
-      <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
+     <a href="{{ route('terms') }}">Terms of Use</a> | 
+<a href="{{ route('privacy') }}">Privacy Policy</a>
+
     </div>
   </footer>
 
