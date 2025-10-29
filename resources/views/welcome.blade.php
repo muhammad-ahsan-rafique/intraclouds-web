@@ -177,6 +177,7 @@
       height: 85vh;
       background: linear-gradient(rgba(37, 67, 108, 0.7), rgba(46, 46, 46, 0.7)),
         url('images/baf.png') center/cover;
+
       background-size: 80% auto;
       display: flex;
       align-items: center;
@@ -925,11 +926,11 @@
     </div>
     <div class="contact-right">
       <div class="contact-grid">
-        <a href="mailto:ahsan.malik1010@gmail.com" class="contact-link email">
+        <a href="mailto:ahsan.rafique@intraclouds.com" class="contact-link email">
           <div class="icon-wrapper">
             <img src="images/email.png" alt="Email">
           </div>
-          <span>ahsan.malik1010@gmail.com</span>
+          <span>ahsan.rafique@intraclouds.com</span>
         </a>
         
         <a href="https://www.linkedin.com/company/intraclouds" target="_blank" class="contact-link linkedin">
