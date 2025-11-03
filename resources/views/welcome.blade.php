@@ -19,10 +19,9 @@
       padding-top: 80px; /* Leaves space for fixed navbar */
     }
     html {
-  scroll-padding-top: 100px; /* equal to navbar height + small margin */
-  scroll-behavior: smooth;   /* optional: makes scrolling smooth */
-}
-
+      scroll-padding-top: 100px; /* equal to navbar height + small margin */
+      scroll-behavior: smooth;   /* optional: makes scrolling smooth */
+    }
 
     /* NAVIGATION BAR */
     .navbar {
@@ -51,6 +50,100 @@
       object-fit: contain;
       border-radius: 10px;
       margin-left: -10px;
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 30px;
+      height: 30px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1000;
+      padding: 0;
+    }
+
+    .hamburger {
+      display: block;
+      position: relative;
+      width: 20px;
+      height: 2px;
+      background: white;
+      margin: 0 auto;
+      transition: background 0.3s ease;
+    }
+
+    .hamburger::before,
+    .hamburger::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 2px;
+      background: white;
+      left: 0;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger::before {
+      top: -6px;
+    }
+
+    .hamburger::after {
+      bottom: -6px;
+    }
+
+    @media (max-width: 768px) {
+      .logo-area img {
+        width: 180px;
+        margin-left: 0;
+      }
+      
+      .navbar {
+        padding: 0.75rem 1rem;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: fixed;
+        background: rgb(27, 47, 91);
+        top: 0;
+        right: 0;
+        height: auto;
+        width: 100%;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-out;
+        padding: 4rem 2rem 2rem;
+      }
+
+      .nav-links.nav-open {
+        transform: translateX(0);
+      }
+
+      /* New hamburger animation */
+      .nav-toggle.nav-open .hamburger {
+        background: transparent;
+      }
+
+      .nav-toggle.nav-open .hamburger::before {
+        transform: translateY(6px) rotate(45deg);
+      }
+
+      .nav-toggle.nav-open .hamburger::after {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-area img {
+        width: 150px;
+      }
     }
 
     .nav-links {
@@ -84,6 +177,7 @@
       height: 85vh;
       background: linear-gradient(rgba(37, 67, 108, 0.7), rgba(46, 46, 46, 0.7)),
         url('images/baf.png') center/cover;
+
       background-size: 80% auto;
       display: flex;
       align-items: center;
@@ -97,7 +191,7 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 2rem;
+      padding: 1rem;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -105,19 +199,57 @@
     .hero h1 {
       font-size: 3rem;
       margin-bottom: 1.5rem;
+      line-height: 1.2;
+      color: white; /* Explicitly set to white */
     }
 
-    .hero p {
+    .hero h3 {
       font-size: 1.2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+      color: white; /* Explicitly set to white */
+    }
+
+        @media (max-width: 768px) {
+      .hero {
+        background-size: 100% 100%;
+        background-position: center;
+        height: 45vh;
+        margin-top: -80px;
+        padding-top: 80px;
+      }
+
+      .hero-content {
+        padding: 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+        color: white; /* Ensure white color on smaller screens */
+      }
+      .hero h3 {
+        font-size: 1.1rem;
+        color: white; /* Ensure white color on smaller screens */
+      }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.8rem;
+        color: white; /* Ensure white color on smaller screens */
+      }
+      .hero h3 {
+        font-size: 1rem;
+        color: white; /* Ensure white color on smaller screens */
+      }
     }
 
     /* SERVICES GRID */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
-      margin: 3rem 2rem;
+      margin: 3rem 1rem;
+      padding: 0 0.5rem;
     }
 
     .service-card {
@@ -176,12 +308,197 @@
 
     /* CONTACT SECTION */
     .contact-section {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
+      display: flex;
+      gap: 4rem;
+      background: linear-gradient(135deg, rgb(27, 47, 91) 0%, rgb(20, 35, 70) 100%);
       margin: 2rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .contact-left {
+      flex: 1;
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      min-width: 300px;
+    }
+
+    .contact-left h2 {
+      font-size: 3rem;
+      color: white;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .contact-left h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: #4bc0d9;
+      border-radius: 2px;
+    }
+
+    .contact-left p {
+      color: #e0e0e0;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .contact-highlight {
+      margin-top: auto;
+      padding: 1.5rem;
+      background: rgba(75, 192, 217, 0.1);
+      border-left: 4px solid #4bc0d9;
+      border-radius: 0 10px 10px 0;
+    }
+
+    .contact-highlight span {
+      color: #ffffff;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+    
+    .contact-right {
+      flex: 1.5;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 4rem;
+      display: flex;
+      align-items: center;
+      min-width: 300px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      width: 100%;
+    }
+
+    .contact-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      backdrop-filter: blur(5px); /* Subtle blur for modern look */
+      -webkit-backdrop-filter: blur(5px); /* For Safari compatibility */
+    }
+
+    .icon-wrapper {
+      width: 50px;
+      height: 50px;
+      background: rgba(75, 192, 217, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .contact-link img {
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .contact-link span {
+      color: white;
+      font-size: 0.9rem;
       text-align: center;
+      transition: color 0.3s ease;
+      font-weight: 500; /* Slightly bolder for clarity */
+    }
+
+    .contact-link:hover {
+      transform: translateY(-5px) scale(1.03); /* Subtle scale for elegance */
+      background: rgba(255, 255, 255, 0.15); /* Semi-transparent white for clean look */
+      border-color: #4bc0d9;
+      box-shadow: 0 8px 25px rgba(75, 192, 217, 0.3); /* Cyan glow effect */
+      backdrop-filter: blur(8px); /* Enhanced blur on hover */
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .contact-link:hover .icon-wrapper {
+      background: rgba(75, 192, 217, 0.3); /* Slightly stronger cyan */
+      transform: scale(1.1);
+    }
+
+    .contact-link:hover img {
+      transform: scale(1.1);
+      filter: brightness(0); /* Dark icons for contrast */
+    }
+
+    .contact-link:hover span {
+      color: #1B2F5B; /* Dark navy for high contrast and readability */
+      font-weight: 600; /* Bolder on hover for emphasis */
+    }
+
+    @media (max-width: 1024px) {
+      .contact-section {
+        flex-direction: column;
+        gap: 2rem;
+        margin: 1rem;
+      }
+
+      .contact-left, .contact-right {
+        padding: 2rem;
+      }
+
+      .contact-left {
+        text-align: center;
+      }
+
+      .contact-left h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .contact-highlight {
+        text-align: center;
+        border-left: none;
+        border-bottom: 4px solid #4bc0d9;
+        border-radius: 10px 10px 0 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .contact-left h2 {
+        font-size: 2rem;
+      }
+
+      .contact-link {
+        padding: 1rem;
+      }
+
+      .icon-wrapper {
+        width: 40px;
+        height: 40px;
+      }
+
+      .contact-link img {
+        width: 20px;
+        height: 20px;
+      }
     }
 
     .contact-container {
@@ -190,12 +507,12 @@
     }
 
     .contact-container h2 {
-      color: #1B2F5B;
+      color: white;
       margin-bottom: 1rem;
     }
 
     .contact-container p {
-      color: #666;
+      color: #e0e0e0;
       font-size: 1rem;
       margin-bottom: 2rem;
     }
@@ -203,44 +520,60 @@
     .contact-list {
       list-style: none;
       display: flex;
-      flex-direction: row;
-      gap: 1.5rem;
       justify-content: center;
       align-items: center;
-      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 0 auto;
+      padding: 0;
+      flex-wrap: nowrap;
+      max-width: 1200px;
     }
 
     .contact-item {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      background: #f8f9fa;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      justify-content: center;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.25rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       transition: transform 0.3s, background 0.3s;
+      text-align: center;
+      min-width: 0;
     }
 
     .contact-item:hover {
       transform: translateY(-3px);
-      background: #e9ecef;
+      background: rgba(255, 255, 255, 0.15);
     }
 
     .contact-item img {
       width: 40px;
       height: 40px;
       object-fit: contain;
+      filter: brightness(0) invert(1);
     }
 
     .contact-item a {
-      color: #1da1f2;
+      color: #ffffff;
       text-decoration: none;
       font-size: 1.1rem;
       transition: color 0.3s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .contact-item a:hover {
-      color: #0c85d0;
+      color: #4bc0d9;
+    }
+    
+    @media (max-width: 768px) {
+      .contact-list {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+      }
     }
 
     /* CORE TECHNOLOGIES SECTION */
@@ -271,12 +604,12 @@
     }
 
     .tech-grid {
-      display: flex;
-      flex-direction: row;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 2rem;
       max-width: 1200px;
       margin: 0 auto;
-      flex-wrap: nowrap;
+      padding: 0 1rem;
     }
 
     .tech-category {
@@ -285,7 +618,22 @@
       border-radius: 10px;
       transition: transform 0.3s, box-shadow 0.3s;
       text-align: center;
-      flex: 1;
+      min-height: 200px; /* Ensure consistent height */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 1200px) {
+      .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .tech-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .tech-category:hover {
@@ -302,18 +650,21 @@
     .tech-icons {
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 1rem;
-      flex-wrap: wrap;
+      flex-wrap: nowrap; /* Prevent wrapping to keep logos in a single line */
     }
 
     .cloud-computing .tech-icons {
-      flex-wrap: nowrap;
+      flex-wrap: nowrap; /* Ensure no wrapping for cloud computing */
     }
 
     .tech-item {
       display: flex;
       flex-direction: column;
       align-items: center;
+      flex: 1; /* Ensure equal width for each tech-item */
+      min-width: 0; /* Prevent overflow */
     }
 
     .tech-item img {
@@ -353,21 +704,49 @@
     @media (max-width: 768px) {
       .navbar {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        padding: 0.5rem;
+      }
+      .logo-area {
+        margin-bottom: 1rem;
       }
       .nav-links {
         flex-direction: column;
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0;
+        gap: 1rem;
+      }
+      .nav-links li {
+        width: 100%;
+        padding: 0.5rem 0;
       }
       .highlight-section {
         flex-direction: column;
+        margin: 1rem;
+      }
+      .highlight-image {
+        width: 100%;
+        height: 250px;
+      }
+      .highlight-content {
+        padding: 2rem 1rem;
       }
       .contact-section {
-        flex-direction: column;
-        text-align: center;
+        padding: 1rem;
+        margin: 1rem;
       }
       .contact-list {
         flex-direction: column;
         gap: 1rem;
+      }
+      .contact-item {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+      .contact-item a {
+        font-size: 0.85rem;
       }
       .contact-item {
         width: 100%;
@@ -379,10 +758,19 @@
       }
       .tech-grid {
         flex-direction: column;
-        flex-wrap: wrap;
+        gap: 1.5rem;
+        padding: 0 1rem;
+      }
+      .tech-category {
+        width: 100%;
       }
       .cloud-computing .tech-icons {
-        flex-wrap: wrap;
+        flex-wrap: nowrap; /* Keep logos in a single line */
+        justify-content: center;
+        gap: 1rem;
+      }
+      .tech-item {
+        margin: 0.5rem;
       }
       .footer {
         flex-direction: column;
@@ -400,6 +788,9 @@
     <div class="logo-area">
       <img src="images/nlogo.png" alt="Company Logo">
     </div>
+    <button class="nav-toggle" aria-label="toggle navigation">
+      <span class="hamburger"></span>
+    </button>
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#services">Services</a></li>
@@ -427,7 +818,7 @@
     <div class="service-card">
       <img src="images/AI.png" alt="AI/Computer Vision Logo">
       <h3>AI / COMPUTER VISION</h3>
-      <p>Transform data into intelligence with our AI and Computer Vision solutions. From automation to real-time image analysis, we build smart systems that drive business impact.</p>
+      <p>Transform information and into intelligence with our AI and Computer Vision solutions. From automation to real-time image analysis, we build smart systems that drive business impact.</p>
       <p class="italic-text"></p>
     </div>
     <div class="service-card">
@@ -537,27 +928,43 @@
 
   <!-- CONTACT SECTION -->
   <div class="contact-section" id="contact">
-    <div class="contact-container">
+    <div class="contact-left">
       <h2>Get in Touch</h2>
       <p>Reach out to us for inquiries or collaboration opportunities.</p>
-      <ul class="contact-list">
-        <li class="contact-item">
-          <img src="images/email.png" alt="Email Icon">
-          <a href="mailto:ahsan.malik1010@gmail.com">ahsan.malik1010@gmail.com</a>
-        </li>
-        <li class="contact-item">
-          <img src="images/linkdin.png" alt="LinkedIn Icon">
-          <a href="https://www.linkedin.com/company/intraclouds" target="_blank">LinkedIn</a>
-        </li>
-        <li class="contact-item">
-          <img src="images/call.png" alt="Phone Icon">
-          <a href="tel:+923143330888">+923143330888</a>
-        </li>
-        <li class="contact-item">
-          <img src="images/website.png" alt="Website Icon">
-          <a href="https://www.intraclouds.com" target="_blank">www.intraclouds.com</a>
-        </li>
-      </ul>
+      <div class="contact-highlight">
+        <span>Let's Build Something Amazing Together!</span>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="contact-grid">
+        <a href="mailto:ahsan.rafique@intraclouds.com" class="contact-link email">
+          <div class="icon-wrapper">
+            <img src="images/email.png" alt="Email">
+          </div>
+          <span>ahsan.rafique@intraclouds.com</span>
+        </a>
+        
+        <a href="https://www.linkedin.com/company/intraclouds" target="_blank" class="contact-link linkedin">
+          <div class="icon-wrapper">
+            <img src="images/linkdin.png" alt="LinkedIn">
+          </div>
+          <span>LinkedIn</span>
+        </a>
+        
+        <a href="tel:+923143330888" class="contact-link phone">
+          <div class="icon-wrapper">
+            <img src="images/call.png" alt="Phone">
+          </div>
+          <span>+923143330888</span>
+        </a>
+        
+        <a href="https://www.intraclouds.com" target="_blank" class="contact-link website">
+          <div class="icon-wrapper">
+            <img src="images/website.png" alt="Website">
+          </div>
+          <span>www.intraclouds.com</span>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -565,8 +972,44 @@
   <footer class="footer">
     <span>© 2025 INTRACLOUDS (SMC-PRIVATE) LIMITED</span>
     <div>
-      <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
+     <a href="{{ route('terms') }}">Terms of Use</a> | 
+<a href="{{ route('privacy') }}">Privacy Policy</a>
+
     </div>
   </footer>
+
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('nav-open');
+      navLinks.classList.toggle('nav-open');
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('nav-open');
+        navLinks.classList.remove('nav-open');
+      });
+    });
+
+    /*
+    // Optional JavaScript for a fade-in animation on hover (not used in current implementation)
+    document.querySelectorAll('.contact-link').forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        link.style.transition = 'all 0.3s ease, opacity 0.3s ease';
+        link.style.opacity = '0.8';
+        setTimeout(() => {
+          link.style.opacity = '1';
+        }, 150);
+      });
+      link.addEventListener('mouseleave', () => {
+        link.style.opacity = '1';
+      });
+    });
+    */
+  </script>
 </body>
 </html>
