@@ -210,17 +210,17 @@
       color: white; /* Explicitly set to white */
     }
 
-        @media (max-width: 768px) {
+    @media (max-width: 768px) {
       .hero {
-        background-size: 100% 100%;
+        background-size: cover;
         background-position: center;
-        height: 45vh;
+        height: 40vh;
         margin-top: -80px;
         padding-top: 80px;
       }
 
       .hero-content {
-        padding: 1rem;
+        padding: 1.5rem 1rem;
       }
 
       .hero h1 {
@@ -231,6 +231,7 @@
         font-size: 1.1rem;
         color: white; /* Ensure white color on smaller screens */
       }
+    }  
 
     @media (max-width: 480px) {
       .hero h1 {
@@ -631,8 +632,42 @@
     }
 
     @media (max-width: 640px) {
+      .core-technologies {
+        padding: 4rem 0.5rem;
+      }
+
       .tech-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 0 1rem;
+        margin: 0;
+      }
+
+      .tech-category {
+        width: 100%;
+        max-width: 320px;
+        margin: 1rem auto;
+      }
+
+      .tech-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        width: 100%;
+      }
+
+      .tech-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .tech-header {
+        padding: 0 1rem;
       }
     }
 
