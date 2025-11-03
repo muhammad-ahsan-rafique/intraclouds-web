@@ -210,7 +210,19 @@
       color: white; /* Explicitly set to white */
     }
 
-    @media (max-width: 768px) {
+        @media (max-width: 768px) {
+      .hero {
+        background-size: 100% 100%;
+        background-position: center;
+        height: 45vh;
+        margin-top: -80px;
+        padding-top: 80px;
+      }
+
+      .hero-content {
+        padding: 1rem;
+      }
+
       .hero h1 {
         font-size: 2rem;
         color: white; /* Ensure white color on smaller screens */
@@ -219,7 +231,6 @@
         font-size: 1.1rem;
         color: white; /* Ensure white color on smaller screens */
       }
-    }
 
     @media (max-width: 480px) {
       .hero h1 {
