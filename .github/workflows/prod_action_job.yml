@@ -2,10 +2,9 @@ name: Deploy Laravel Static Assets to S3 production environment
 
 
 on:
-  workflow_dispatch:
-  # push:
-  #   branches:
-  #     - master
+  push:
+    branches:
+      - master
 
 env:
   S3_BUCKET_NAME: intraclouds.com
