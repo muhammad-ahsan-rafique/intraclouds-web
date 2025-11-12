@@ -2,10 +2,7 @@ name: Deploy Laravel Static Assets to S3
 #v1
 on:
   workflow_dispatch:
-# env:
-#   DEV_S3_BUCKET_NAME: dev.intraclouds.com
-#   DEV_AWS_REGION: us-east-2
-#   DEV_CLOUDFRONT_DISTRIBUTION_ID: E10FKBKZP56D79
+
   
 jobs:
   build_and_deploy:
