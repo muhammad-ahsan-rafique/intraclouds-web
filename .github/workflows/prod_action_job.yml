@@ -1,4 +1,4 @@
-name: Deploy Laravel Static Assets to S3 production varsironment
+name: Deploy Laravel Static Assets to S3 production environment
 
 
 on:
