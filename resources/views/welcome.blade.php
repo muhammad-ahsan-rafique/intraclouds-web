@@ -1005,7 +1005,7 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <span>© 2025 INTRACLOUDS (SMC-PRIVATE) LIMITED</span>
+    <span>© 2026 INTRACLOUDS </span>
     <div>
      <a href="{{ route('terms') }}">Terms of Use</a> | 
 <a href="{{ route('privacy') }}">Privacy Policy</a>
